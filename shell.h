@@ -134,8 +134,8 @@ int _strlen(const char *s);
 /* check_syntax_error.c */
 int repeated_char(char *input, int i);
 int first_char(char *input, int *i);
-intint check_syntax_error(data_shell *datash, char *input);
-error_sep_op(char *input, int i, char last);
+int check_syntax_error(data_shell *datash, char *input);
+int error_sep_op(char *input, int i, char last);
 void print_syntax_error(data_shell *datash, char *input, int i, int bool);
 
 
