@@ -1,8 +1,8 @@
 #include "shell.h"
-#include "main.h"
 
 /**
  * is_cdir - checks ":" if is in the current directory.
+ * helen&martin
  * @path: type char pointer char.
  * @i: type int pointer of index.
  * Return: 1 if the path is searchable in the cd, 0 otherwise.
