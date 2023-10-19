@@ -1,25 +1,34 @@
 #include "shell.h"
 
 /**
- * retrieve_environment - returns a copy of the environment strings.
- * @info: Structure containing potential arguments.
- * Return: Copy of environment strings.
+ * exit_shell - exits the shell
+ * helen&martin
+ * @datash: data relevant (status and args)
+ * Return: 0 on success.
  */
-char **retrieve_environment(info_t *info)
+int exit_shell(data_shell *datash)
 {
-	if (!info->environment || info->env_modified)
+	unsigned int ustatus;
+	int is_digit;
+	int str_len;
+	int big_number;
+
+	if (datash->args[1] != NULL)
 	{
-		info->environment = list_to_strings(info->env_modified);
-		info->env_modified = 0;
+		ustatus = _atoi(datash->args[1]);
+		is_digit = _isdigit(datash->args[1]);
+		str_len = _strlen(datash->args[1]);
+		big_number = ustatus > (unsigned int)INT_MAX;
+		if (!is_digit || str_len > 10 || big_number)
+		{
+			get_error(datash, 2);
+			datash->status = 2;
+			return (1);
+		}
+		datash->status = (ustatus % 256);
 	}
-
-	return (info->environment);
-}
-
-/**
- * _removeenv - Remove an environment variable
- * @info: Structure containing potential arguments.
- * @property: the string environment variable to remove
+	return (0);
+} @property: the string environment variable to remove
  * Return: 1 if deleted, 0 otherwise
  */
 int _removeenv(info_t *info, char *property)
